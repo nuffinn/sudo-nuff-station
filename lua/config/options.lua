@@ -6,7 +6,7 @@ function M.setup()
   vim.keymap.set("", "<Space>", "<Nop>", { silent = true })
   vim.g.mapleader = " "
   vim.g.maplocalleader = " "
-  
+
   -- General options
   vim.opt.number = true
   vim.opt.relativenumber = true
@@ -22,7 +22,8 @@ function M.setup()
   vim.opt.updatetime = 250
   vim.opt.signcolumn = 'yes'
   vim.opt.completeopt = 'menuone,noselect'
-  
+  vim.opt.autoread = true
+
   -- Additional settings for consistency
   vim.o.hlsearch = false
   vim.o.sw = 3
@@ -38,12 +39,12 @@ function M.setup()
   vim.wo.signcolumn = 'yes'
   vim.o.termguicolors = true
   vim.o.completeopt = 'menuone,noselect'
-  
+
   -- Terminal and tmux compatibility
   vim.opt.ttimeout = true
   vim.opt.ttimeoutlen = 50
   vim.opt.ttyfast = true
-  
+
   -- Better LSP experience
   vim.opt.updatetime = 100
   vim.opt.redrawtime = 10000
