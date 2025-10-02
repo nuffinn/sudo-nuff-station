@@ -48,6 +48,12 @@ function M.setup()
   -- Better LSP experience
   vim.opt.updatetime = 100
   vim.opt.redrawtime = 10000
+
+  -- Built-in folding with treesitter
+  vim.opt.foldmethod = "expr"
+  vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  vim.opt.foldenable = true
+  vim.opt.foldlevel = 99  -- Start with most folds open
 end
 
 return M
