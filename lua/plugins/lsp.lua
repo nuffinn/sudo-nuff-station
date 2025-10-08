@@ -244,12 +244,15 @@ function M.setup()
     library = { plugins = { 'nvim-dap-ui' }, types = true },
   }
   
-  -- Configure LSP servers
+  -- Configure LSP servers using vim.lsp.config
   for server_name, server_config in pairs(servers) do
-    require('lspconfig')[server_name].setup({
+    vim.lsp.config(server_name, {
       capabilities = capabilities,
       settings = server_config.settings,
+      cmd = server_config.cmd,
+      filetypes = server_config.filetypes,
     })
+    vim.lsp.enable(server_name)
   end
   
   -- Setup fidget for LSP status
