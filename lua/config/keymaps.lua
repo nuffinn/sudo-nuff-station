@@ -55,6 +55,15 @@ function M.setup()
       print("Format on save enabled")
     end
   end, { desc = 'Toggle format on save' })
+
+  -- Git Worktree keymaps
+  vim.keymap.set('n', '<leader>gw', function()
+    require('telescope').extensions.git_worktree.git_worktrees()
+  end, { desc = 'Git worktrees (list/switch/delete)' })
+
+  vim.keymap.set('n', '<leader>gc', function()
+    require('telescope').extensions.git_worktree.create_git_worktree()
+  end, { desc = 'Git worktree create' })
 end
 
 return M

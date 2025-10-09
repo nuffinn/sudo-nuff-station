@@ -20,6 +20,10 @@ function M.setup()
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
     use 'lewis6991/gitsigns.nvim'
+    use {
+      'ThePrimeagen/git-worktree.nvim',
+      requires = 'nvim-telescope/telescope.nvim',
+    }
 
     -- Go development and formatting
     use {
