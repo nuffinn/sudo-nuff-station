@@ -2,14 +2,41 @@
 local M = {}
 
 function M.setup()
-  -- Setup nvim-gps
-  require('nvim-gps').setup {
-    disable_icons = true,
+  -- Setup nvim-navic
+  require('nvim-navic').setup {
+    icons = {
+      File          = ' ',
+      Module        = ' ',
+      Namespace     = ' ',
+      Package       = ' ',
+      Class         = ' ',
+      Method        = ' ',
+      Property      = ' ',
+      Field         = ' ',
+      Constructor   = ' ',
+      Enum          = ' ',
+      Interface     = ' ',
+      Function      = ' ',
+      Variable      = ' ',
+      Constant      = ' ',
+      String        = ' ',
+      Number        = ' ',
+      Boolean       = ' ',
+      Array         = ' ',
+      Object        = ' ',
+      Key           = ' ',
+      Null          = ' ',
+      EnumMember    = ' ',
+      Struct        = ' ',
+      Event         = ' ',
+      Operator      = ' ',
+      TypeParameter = ' ',
+    },
   }
-  
-  -- Setup lualine with gps integration
-  local gps = require 'nvim-gps'
-  
+
+  -- Setup lualine with navic integration
+  local navic = require 'nvim-navic'
+
   require('lualine').setup {
     options = {
       icons_enabled = false,
@@ -26,8 +53,8 @@ function M.setup()
           color = 'CustomFileName',
         },
         {
-          gps.get_location,
-          cond = gps.is_available,
+          function() return navic.get_location() end,
+          cond = function() return navic.is_available() end,
           color = 'CustomGpsOutput',
         },
       },

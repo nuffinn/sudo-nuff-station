@@ -57,8 +57,8 @@ function M.setup()
 
     -- Navigation and status
     use {
-      'SmiteshP/nvim-gps',
-      requires = 'nvim-treesitter/nvim-treesitter',
+      'SmiteshP/nvim-navic',
+      requires = 'neovim/nvim-lspconfig',
     }
     use 'nvim-lualine/lualine.nvim'
 
