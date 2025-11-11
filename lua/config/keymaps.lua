@@ -21,6 +21,9 @@ function M.setup()
   vim.api.nvim_set_keymap('n', '<leader>tf', ':NERDTreeFind<CR>',
     { noremap = true, silent = true, desc = "Find in NERDTree" })
 
+  vim.api.nvim_set_keymap('n', '<leader>tr', ':NERDTreeRefreshRoot<CR>',
+    { noremap = true, silent = true, desc = "NERDTree Refresh Root" })
+
   -- LSP debug keybindings
   vim.keymap.set('n', '<leader>li', ':LspInfo<CR>', { desc = 'LSP Info' })
   vim.keymap.set('n', '<leader>lr', ':LspRestart<CR>', { desc = 'LSP Restart' })
