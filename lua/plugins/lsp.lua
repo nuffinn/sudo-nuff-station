@@ -210,6 +210,12 @@ function M.setup()
         },
       },
     },
+    -- Other servers found on previous machine:
+    bashls = {},
+    golangci_lint_ls = {},
+    jsonls = {},
+    pylsp = {},
+
     -- pyright = {},
     -- rust_analyzer = {},
     -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -218,7 +224,7 @@ function M.setup()
     --    https://github.com/pmizio/typescript-tools.nvim
     --
     -- But for many setups, the LSP (`ts_ls`) will work just fine
-    -- ts_ls = {},
+    ts_ls = {},
     --
 
     lua_ls = {
