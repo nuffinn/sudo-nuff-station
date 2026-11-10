@@ -2,13 +2,18 @@
 local M = {}
 
 function M.setup()
-  -- Disable default Neovim 0.11+ GLOBAL LSP keybindings
-  -- These are created at startup and cause 'gr' to wait for additional keystrokes
-  vim.keymap.del('n', 'grr')
-  vim.keymap.del('n', 'grn')
-  vim.keymap.del({ 'n', 'x' }, 'gra')
-  vim.keymap.del('n', 'gri')
-  vim.keymap.del('n', 'grt')
+  -- Disable default Neovim 0.11+ GLOBAL LSP keybindings that start with 'gr'
+  -- (grn, gra, grr, gri, grt, grx, ...). They are created at startup and cause
+  -- 'gr' to wait for additional keystrokes. We keep a bare 'gr' for
+  -- [G]oto [R]eferences (mapped per-buffer below). pcall avoids errors when a
+  -- given default doesn't exist on the running Neovim version.
+  for _, mode in ipairs { 'n', 'x' } do
+    for _, m in ipairs(vim.api.nvim_get_keymap(mode)) do
+      if m.lhs:match '^gr.' then
+        pcall(vim.keymap.del, mode, m.lhs)
+      end
+    end
+  end
 
   -- This function gets run when an LSP attaches to a particular buffer.
   vim.api.nvim_create_autocmd('LspAttach', {
