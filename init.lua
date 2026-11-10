@@ -1,6 +1,10 @@
 -- Neovim Configuration
 -- Modular setup for better maintainability
 
+-- Speed up Lua module loading via the built-in bytecode cache (Neovim 0.9+).
+-- Must run before any other require().
+vim.loader.enable()
+
 -- Load core configuration
 require('config.options').setup()
 require('config.keymaps').setup()
