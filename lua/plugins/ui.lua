@@ -77,6 +77,11 @@ function M.setup()
         return false
       end
 
+      -- Logs are read, not edited; hunk signs are just noise there
+      if vim.bo[bufnr].filetype == 'log' then
+        return false
+      end
+
       local gs = require('gitsigns')
 
       -- Jump to next git change. target = 'all' also visits staged hunks, which is
@@ -98,6 +103,7 @@ function M.setup()
   -- globally here replaces the old per-BufEnter finddir auto-enable autocmd).
   require('gitblame').setup {
     enabled = true,
+    ignored_filetypes = { 'log' },
   }
 end
 

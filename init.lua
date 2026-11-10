@@ -37,5 +37,6 @@ safe_require_setup('plugins.claude-code')
 safe_require_setup('plugins.git-worktree')
 safe_require_setup('plugins.dap')
 safe_require_setup('plugins.nerdtree')
+safe_require_setup('plugins.log')
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -109,6 +109,9 @@ function M.setup()
       end
     }
 
+    -- Log file highlighting (*.log filetype, levels, timestamps, IPs, UUIDs)
+    use 'fei6409/log-highlight.nvim'
+
     -- Utilities
     use 'numToStr/Comment.nvim'
     use 'tpope/vim-sleuth'

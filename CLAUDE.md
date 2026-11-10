@@ -52,6 +52,7 @@ return M
 - Go test files (`*test.go`) are dimmed in NERDTree and excluded from `<leader>sf`/`<leader>sg`/`<leader>sw` and from `gr`/`gI`/`gW` (LSP references, implementations, workspace symbols — but not `gd`/`gy`, and not while editing a test file); `<leader>st` (or `:TelescopeGoTests`) toggles them back in
 - Diagnostics: `<leader>ne` (next error), `<leader>e` (open diagnostic float)
 - Git: `gn` (next hunk), `gpi` (preview hunk inline)
+- Logs (`lua/plugins/log.lua`, log-highlight.nvim + `after/syntax/log.vim` for JSON `"level"` values; `*.log`, `*_log`, `*.log.N` open as filetype `log`, read-only, nowrap; git-blame/gitsigns off): `]e`/`[e` next/prev error, `]w`/`[w` next/prev warning, `<leader>Lf` fold away lines not matching the last search (toggle), `<leader>Lq` last search to location list, `<leader>Lw` toggle wrap, `K` pretty-print the line's JSON / Python dict in a float (`K` again to enter it), `<leader>LF` or `:LogFollow` toggles tail -f (stays put if you scroll up); files over 50 MB open without syntax, swap or undo
 
 ## Development Setup
 
