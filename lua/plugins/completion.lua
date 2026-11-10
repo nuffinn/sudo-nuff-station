@@ -22,12 +22,7 @@ function M.setup()
       },
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          local entry = cmp.get_selected_entry()
-          if entry and entry.source.name == 'copilot' then
-            cmp.confirm({ select = true })
-          else
-            cmp.select_next_item()
-          end
+          cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
@@ -47,7 +42,6 @@ function M.setup()
 
 
     sources = {
-      { name = 'copilot',  group_index = 2 },
       { name = 'nvim_lsp', group_index = 2 },
       { name = 'luasnip',  group_index = 2 },
     },

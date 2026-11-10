@@ -42,8 +42,6 @@ function M.setup()
     }
 
     -- AI assistance
-    use 'zbirenbaum/copilot.lua'
-    use 'zbirenbaum/copilot-cmp'
     use {
       'Exafunction/codeium.nvim',
       requires = {
