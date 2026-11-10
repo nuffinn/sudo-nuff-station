@@ -25,6 +25,10 @@ function M.setup()
     pattern = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
     group = ts_highlight_group,
     callback = function()
+      -- Dracula-style colours tuned for the black background; in light mode
+      -- (Super+D toggle) onedark's light palette is used as is.
+      if vim.o.background ~= 'dark' then return end
+      vim.g.ts_dark_highlights = true
       -- Keywords (const, let, function, return, if, else, etc.)
       vim.api.nvim_set_hl(0, '@keyword.typescript', { fg = '#ff79c6', bold = true })
       vim.api.nvim_set_hl(0, '@keyword.typescriptreact', { fg = '#ff79c6', bold = true })
@@ -100,6 +104,17 @@ function M.setup()
     end,
   })
   
+  -- Any :colorscheme (e.g. the light/dark toggle) clears the groups above;
+  -- put them back when returning to dark if a TS/JS buffer has set them before.
+  vim.api.nvim_create_autocmd('ColorScheme', {
+    group = ts_highlight_group,
+    callback = function()
+      if vim.o.background == 'dark' and vim.g.ts_dark_highlights then
+        vim.api.nvim_exec_autocmds('FileType', { group = ts_highlight_group, pattern = 'typescript' })
+      end
+    end,
+  })
+
   -- (git-blame auto-enable removed: it ran vim.fn.finddir('.git', ...) on every
   --  BufEnter. git-blame.nvim only renders in git repos anyway, so it is now just
   --  enabled = true in plugins/ui.lua.)
