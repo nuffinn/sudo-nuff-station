@@ -144,6 +144,14 @@ function M.setup()
         })
       end
 
+      -- Code lens (e.g. gopls: generate, run test, regenerate cgo, tidy).
+      -- The built-in `grx` keymap (Neovim 0.12) runs the lens under the cursor.
+      -- vim.lsp.codelens.enable() auto-refreshes the lenses on the relevant
+      -- events, so no manual refresh autocmd is needed.
+      if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_codeLens, event.buf) then
+        vim.lsp.codelens.enable(true, { bufnr = event.buf })
+      end
+
       -- The following code creates a keymap to toggle inlay hints in your
       -- code, if the language server you are using supports them
       --
