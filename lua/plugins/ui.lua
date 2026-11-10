@@ -94,9 +94,10 @@ function M.setup()
   -- Setup DAP UI
   require('dapui').setup()
   
-  -- Setup git blame
+  -- Setup git blame (git-blame.nvim only renders inside git repos, so enabling it
+  -- globally here replaces the old per-BufEnter finddir auto-enable autocmd).
   require('gitblame').setup {
-    enabled = false,
+    enabled = true,
   }
 end
 

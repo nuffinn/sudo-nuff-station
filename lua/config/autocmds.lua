@@ -100,18 +100,9 @@ function M.setup()
     end,
   })
   
-  -- Auto-enable git blame in git repositories
-  local gitblame_group = vim.api.nvim_create_augroup('GitBlameAuto', { clear = true })
-  vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function()
-      local git_dir = vim.fn.finddir('.git', vim.fn.expand('%:p:h') .. ';')
-      if git_dir ~= '' then
-        vim.cmd('GitBlameEnable')
-      end
-    end,
-    group = gitblame_group,
-    pattern = '*',
-  })
+  -- (git-blame auto-enable removed: it ran vim.fn.finddir('.git', ...) on every
+  --  BufEnter. git-blame.nvim only renders in git repos anyway, so it is now just
+  --  enabled = true in plugins/ui.lua.)
   
   -- Packer auto-reload
   local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
