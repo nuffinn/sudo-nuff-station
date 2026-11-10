@@ -42,6 +42,7 @@ function M.setup()
 
 
     sources = {
+      { name = 'lazydev',  group_index = 0 }, -- Neovim Lua API / vim.uv completions
       { name = 'nvim_lsp', group_index = 2 },
       { name = 'luasnip',  group_index = 2 },
     },

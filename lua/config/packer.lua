@@ -64,7 +64,7 @@ function M.setup()
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'j-hui/fidget.nvim',
-        'folke/neodev.nvim',
+        'folke/lazydev.nvim',
       },
     }
 

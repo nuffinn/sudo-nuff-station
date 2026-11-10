@@ -265,10 +265,18 @@ function M.setup()
     automatic_installation = true,
   }
 
-  -- Setup neodev for better Lua LSP
-  require('neodev').setup {
-    library = { plugins = { 'nvim-dap-ui' }, types = true },
-  }
+  -- Setup lazydev for better Lua LSP (neodev's maintained successor).
+  -- pcall-guarded so a pre-:PackerSync state (lazydev not yet installed) does not
+  -- abort the rest of LSP setup.
+  local lazydev_ok, lazydev = pcall(require, 'lazydev')
+  if lazydev_ok then
+    lazydev.setup {
+      library = {
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        'nvim-dap-ui',
+      },
+    }
+  end
 
   -- Configure LSP servers using vim.lsp.config
   for server_name, server_config in pairs(servers) do
