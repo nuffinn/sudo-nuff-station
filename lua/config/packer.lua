@@ -80,15 +80,21 @@ function M.setup()
       requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     }
 
-    -- Treesitter
+    -- Treesitter (main branch; requires Neovim 0.12+ and tree-sitter-cli >= 0.26.1)
     use {
       'nvim-treesitter/nvim-treesitter',
+      branch = 'main',
       run = function()
-        pcall(require('nvim-treesitter.install').update { with_sync = true })
+        require('nvim-treesitter').install({
+          'c', 'cpp', 'dart', 'go', 'gomod', 'gosum', 'gowork', 'html', 'latex',
+          'lua', 'markdown', 'markdown_inline', 'python', 'query', 'rust', 'tsx',
+          'typescript', 'vim', 'vimdoc', 'yaml',
+        }):wait(300000)
       end,
     }
     use {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      branch = 'main',
       after = 'nvim-treesitter',
     }
 
