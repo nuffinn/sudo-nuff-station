@@ -35,11 +35,17 @@ function M.setup()
       map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
       -- Find references for the word under your cursor.
-      map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+      --  Hits in Go test files are filtered out (see plugins/telescope.lua,
+      --  toggle with <leader>st), unless you are editing a test file yourself.
+      map('gr', function()
+        require('telescope.builtin').lsp_references(require('plugins.telescope').lsp_opts())
+      end, '[G]oto [R]eferences')
 
       -- Jump to the implementation of the word under your cursor.
       --  Useful when your language has ways of declaring types without an actual implementation.
-      map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+      map('gI', function()
+        require('telescope.builtin').lsp_implementations(require('plugins.telescope').lsp_opts())
+      end, '[G]oto [I]mplementation')
 
       -- WARN: This is not Goto Definition, this is Goto Declaration.
       --  For example, in C this would take you to the header.
@@ -58,7 +64,9 @@ function M.setup()
 
       -- Fuzzy find all the symbols in your current workspace.
       --  Similar to document symbols, except searches over your entire project.
-      map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+      map('gW', function()
+        require('telescope.builtin').lsp_dynamic_workspace_symbols(require('plugins.telescope').lsp_opts())
+      end, 'Open Workspace Symbols')
 
 
       -- Jump to the type of the word under your cursor.

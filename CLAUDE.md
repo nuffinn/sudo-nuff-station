@@ -49,6 +49,7 @@ return M
 - Leader key: `<Space>`
 - LSP navigation: `gd` (definition), `gr` (references), `gI` (implementation)
 - Telescope: `<leader>sf` (find files), `<leader>sg` (live grep), `<leader><space>` (buffers)
+- Go test files (`*test.go`) are dimmed in NERDTree and excluded from `<leader>sf`/`<leader>sg`/`<leader>sw` and from `gr`/`gI`/`gW` (LSP references, implementations, workspace symbols — but not `gd`/`gy`, and not while editing a test file); `<leader>st` (or `:TelescopeGoTests`) toggles them back in
 - Diagnostics: `<leader>ne` (next error), `<leader>e` (open diagnostic float)
 - Git: `gn` (next hunk), `gpi` (preview hunk inline)
 
