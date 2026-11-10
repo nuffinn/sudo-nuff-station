@@ -289,6 +289,21 @@ function M.setup()
     }
   end
 
+  -- fugitive:// buffers (a file at a commit or in the index, e.g. `:Gedit <hash>:<path>`
+  -- opened by lazygit's `E` in the commit files view) have an empty 'buftype', so
+  -- vim.lsp.enable() below would attach gopls to them, and gopls rejects every request
+  -- for a non-file URI ("DocumentURI scheme is not 'file'"). Mark them 'acwrite' (still
+  -- written through fugitive's BufWriteCmd) before the vim.lsp.enable() FileType handler
+  -- runs, since it skips buffers that are not normal files.
+  vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('fugitive-no-lsp', { clear = true }),
+    callback = function(event)
+      if vim.bo[event.buf].buftype == '' and vim.api.nvim_buf_get_name(event.buf):match '^fugitive://' then
+        vim.bo[event.buf].buftype = 'acwrite'
+      end
+    end,
+  })
+
   -- Configure LSP servers using vim.lsp.config
   for server_name, server_config in pairs(servers) do
     vim.lsp.config(server_name, {
