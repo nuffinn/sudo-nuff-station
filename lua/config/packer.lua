@@ -41,15 +41,6 @@ function M.setup()
       end
     }
 
-    -- AI assistance
-    use {
-      'Exafunction/codeium.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'hrsh7th/nvim-cmp'
-      }
-    }
-
     -- File explorer
     use 'preservim/nerdtree'
 

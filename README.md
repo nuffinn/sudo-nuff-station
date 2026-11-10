@@ -32,6 +32,6 @@ The setup bootstraps `packer.nvim` and installs the following plugins:
 *   **Treesitter:** `nvim-treesitter`, `nvim-treesitter-textobjects`
 *   **Git Integration:** `vim-fugitive`, `gitsigns.nvim`, `git-worktree.nvim`, `git-blame.nvim`
 *   **Debugging:** `nvim-dap`, `nvim-dap-ui`, `nvim-dap-go`, `nvim-dap-vscode-js`
-*   **AI Assistance:** `copilot.lua`, `codeium.nvim`, `claude-code.nvim`, `augment.vim`
+*   **AI Assistance:** `copilot.lua`, `claude-code.nvim`, `augment.vim`
 *   **Navigation & UI:** `nerdtree`, `lualine.nvim`, `telescope.nvim`, `onedark.nvim` (Theme)
 *   **Formatting:** `conform.nvim` (Go)
