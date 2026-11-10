@@ -19,31 +19,13 @@ function M.setup()
   vim.opt.ignorecase = true
   vim.opt.smartcase = true
   vim.opt.termguicolors = true
-  vim.opt.updatetime = 250
   vim.opt.signcolumn = 'yes'
   vim.opt.completeopt = 'menuone,noselect'
   vim.opt.autoread = true
 
-  -- Additional settings for consistency
-  vim.o.hlsearch = false
-  vim.o.sw = 3
-  vim.wo.number = true
-  vim.wo.relativenumber = true
-  vim.wo.cursorline = true
-  vim.o.mouse = 'a'
-  vim.o.breakindent = true
-  vim.o.undofile = true
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
-  vim.o.updatetime = 250
-  vim.wo.signcolumn = 'yes'
-  vim.o.termguicolors = true
-  vim.o.completeopt = 'menuone,noselect'
-
   -- Terminal and tmux compatibility
   vim.opt.ttimeout = true
   vim.opt.ttimeoutlen = 50
-  vim.opt.ttyfast = true
 
   -- Better LSP experience
   vim.opt.updatetime = 100
