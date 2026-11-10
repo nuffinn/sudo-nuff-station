@@ -262,7 +262,10 @@ function M.setup()
 
   require('mason-lspconfig').setup {
     ensure_installed = mason_servers,
-    automatic_installation = true,
+    -- mason-lspconfig 2.x removed `automatic_installation`, and `automatic_enable`
+    -- now defaults to true (which would double-enable the servers the loop below
+    -- already enables). Disable it so the explicit loop is the single source of truth.
+    automatic_enable = false,
   }
 
   -- Setup lazydev for better Lua LSP (neodev's maintained successor).
