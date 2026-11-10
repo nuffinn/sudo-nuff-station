@@ -83,24 +83,6 @@ function M.setup()
         vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
       end, '[N]ext [E]rror')
 
-      -- Jump to next git change (requires gitsigns plugin)
-      map('gn', function()
-        if package.loaded.gitsigns then
-          require('gitsigns').next_hunk()
-        else
-          vim.notify('Gitsigns plugin not available', vim.log.levels.WARN)
-        end
-      end, '[N]ext [G]it change')
-
-      -- Preview hunk inline
-      map('gpi', function()
-        if package.loaded.gitsigns then
-          require('gitsigns').preview_hunk_inline()
-        else
-          vim.notify('Gitsigns plugin not available', vim.log.levels.WARN)
-        end
-      end, '[N]ext [G]it change')
-
       -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
       ---@param client vim.lsp.Client
       ---@param method vim.lsp.protocol.Method

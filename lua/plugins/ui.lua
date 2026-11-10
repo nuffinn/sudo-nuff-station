@@ -70,6 +70,25 @@ function M.setup()
       topdelete = { text = '‾' },
       changedelete = { text = '~' },
     },
+    on_attach = function(bufnr)
+      -- Set by the lazygit `E` command (commit files view) for files deleted in
+      -- that commit: the buffer shows the previous version, nothing to diff
+      if vim.b[bufnr].gitsigns_skip then
+        return false
+      end
+
+      local gs = require('gitsigns')
+
+      -- Jump to next git change. target = 'all' also visits staged hunks, which is
+      -- how gitsigns marks a commit's changes in a buffer of a file at that commit
+      -- (`:Gedit <hash>:<path>`, opened by the lazygit `E` command)
+      vim.keymap.set('n', 'gn', function()
+        gs.nav_hunk('next', { target = 'all' })
+      end, { buffer = bufnr, desc = '[N]ext [G]it change' })
+
+      -- Preview hunk inline
+      vim.keymap.set('n', 'gpi', gs.preview_hunk_inline, { buffer = bufnr, desc = '[G]it [P]review hunk [I]nline' })
+    end,
   }
   
   -- Setup DAP UI
