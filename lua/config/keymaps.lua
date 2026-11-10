@@ -10,8 +10,9 @@ function M.setup()
   vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
   -- Diagnostic keymaps
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+  -- [d / ]d are built-in defaults in Neovim 0.11+ (backed by vim.diagnostic.jump
+  -- with count support, e.g. 3]d), so we no longer remap them via the deprecated
+  -- vim.diagnostic.goto_prev/goto_next (scheduled for removal in 0.13).
   vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Set diagnostic loclist" })
 
